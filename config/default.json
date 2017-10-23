@@ -2,6 +2,7 @@
   "host": "localhost",
   "port": 3030,
   "public": "../public/",
+  "apiPath": "/api/",
   "paginate": {
     "default": 10,
     "max": 50
@@ -12,8 +13,8 @@
       "jwt",
       "local"
     ],
-    "path": "/authentication",
-    "service": "users",
+    "path": "/api/authentication",
+    "service": "/api/users",
     "jwt": {
       "header": {
         "type": "access"
