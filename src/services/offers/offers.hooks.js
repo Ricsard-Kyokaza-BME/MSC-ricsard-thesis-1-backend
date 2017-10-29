@@ -3,19 +3,25 @@ const hooks = require('feathers-authentication-hooks');
 
 module.exports = {
   before: {
-    all: [ authenticate('jwt') ],
+    all: [],
     find: [],
     get: [],
     create: [
+      authenticate('jwt'),
       hooks.associateCurrentUser({ idField: '_id', as: 'owner' })
     ],
     update: [
+      authenticate('jwt'),
       hooks.associateCurrentUser({ idField: '_id', as: 'owner' })
     ],
     patch: [
+      authenticate('jwt'),
       hooks.associateCurrentUser({ idField: '_id', as: 'owner' })
     ],
-    remove: []
+    remove: [
+      authenticate('jwt'),
+      hooks.associateCurrentUser({ idField: '_id', as: 'owner' })
+    ]
   },
 
   after: {
