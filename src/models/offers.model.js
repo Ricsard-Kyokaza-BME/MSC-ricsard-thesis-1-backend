@@ -11,6 +11,7 @@ module.exports = function (app) {
     price: { type: String },
     categories: [{ type: Schema.Types.ObjectId, ref: 'categories' }],
     owner: { type: Schema.Types.ObjectId, ref: 'users' },
+    images: { type: [String] },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
   });
