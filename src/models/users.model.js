@@ -16,7 +16,7 @@ module.exports = function (app) {
       set: function (value) {
         // Prevent admin registration
         const adminIndex = value.indexOf('admin');
-        if(adminIndex > 0) {
+        if(adminIndex > -1) {
           value.splice(adminIndex, 1);
         }
         return value;
