@@ -12,6 +12,7 @@ module.exports = function (app) {
     categories: [{ type: Schema.Types.ObjectId, ref: 'categories' }],
     owner: { type: Schema.Types.ObjectId, ref: 'users' },
     images: { type: [String] },
+    coordinates: { type: [Number], index: '2dsphere'},
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
   });

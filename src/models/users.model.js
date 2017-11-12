@@ -10,7 +10,18 @@ module.exports = function (app) {
     lastName: { type: String },
     email: {type: String, unique: true},
     password: { type: String },
-
+    roles: {
+      type: [String],
+      default: ['user'],
+      set: function (value) {
+        // Prevent admin registration
+        const adminIndex = value.indexOf('admin');
+        if(adminIndex > 0) {
+          value.splice(adminIndex, 1);
+        }
+        return value;
+      }
+    },
 
     facebookId: { type: String },
 
