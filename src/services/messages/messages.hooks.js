@@ -8,15 +8,47 @@ module.exports = {
       authenticate('jwt')
     ],
     find: [
-      commonHooks.some(
-        hooks.restrictToOwner({ idField: '_id', ownerField: 'from' }),
-        hooks.restrictToOwner({ idField: '_id', ownerField: 'to' })
+      commonHooks.iff(
+        commonHooks.some(
+          () => {
+            try {
+              hooks.restrictToOwner({ idField: '_id', ownerField: 'from' });
+              return true;
+            } catch (e) {
+              return false;
+            }
+          },
+          () => {
+            try {
+              hooks.restrictToOwner({ idField: '_id', ownerField: 'to' });
+              return true;
+            } catch (e) {
+              return false;
+            }
+          }
+        )
       )
     ],
     get: [
-      commonHooks.some(
-        hooks.restrictToOwner({ idField: '_id', ownerField: 'from' }),
-        hooks.restrictToOwner({ idField: '_id', ownerField: 'to' })
+      commonHooks.iff(
+        commonHooks.some(
+          () => {
+            try {
+              hooks.restrictToOwner({ idField: '_id', ownerField: 'from' });
+              return true;
+            } catch (e) {
+              return false;
+            }
+          },
+          () => {
+            try {
+              hooks.restrictToOwner({ idField: '_id', ownerField: 'to' });
+              return true;
+            } catch (e) {
+              return false;
+            }
+          }
+        )
       )
     ],
     create: [
